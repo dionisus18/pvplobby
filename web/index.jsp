@@ -32,7 +32,7 @@
         email = "";
     }
     if (session.getAttribute("user") == null) {
-            response.sendRedirect("login.jsp");
+            
     }else{
         response.sendRedirect("perfil.jsp");
     }
@@ -133,7 +133,7 @@
                                 <td class="hide-on-med-and-down"></td>
                                 <td class="col l8 m12 s12">
                                     <div class="card-panel white center-align">
-                                        <p>¿Ya Tienes cuenta? <a href="/login.jsp">Iniciar Sesion</a></p>
+                                        <p>¿Ya Tienes cuenta? <a href="login.jsp">Iniciar Sesion</a></p>
                                     </div>
                                 </td>
                             </tr>

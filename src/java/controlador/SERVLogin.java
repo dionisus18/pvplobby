@@ -16,8 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DAOPerfil;
+
 
 import modelo.DAOUsuario;
+import modelo.Perfil;
 
 import modelo.Usuario;
 
@@ -45,7 +48,7 @@ public class SERVLogin extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             /* TODO output your page here. You may use following sample code. */
-           
+            
         }
     }
 
@@ -76,6 +79,7 @@ public class SERVLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                     DAOUsuario daoUsuario = new DAOUsuario();
+                    DAOPerfil daoPerfil = new DAOPerfil();
             Usuario localUsuario = new Usuario();
             String respuesta = "";
             String errores = "";
@@ -116,8 +120,19 @@ public class SERVLogin extends HttpServlet {
                     
                     if (errores.equals("") && validador) {
                         
-                        HttpSession session = request.getSession(true); 
-                        session.setAttribute("user",usuario); 
+                        Perfil ps = new Perfil();
+                        
+                        ps = daoPerfil.selecionarPerfil(localUsuario.getIdUsuario());
+                        if (ps == null) {
+                            System.out.println("No sirve la query o no hay perfil");
+                        }else{
+                            request.setAttribute("perfil", ps);
+                        }
+                        
+                        
+                        HttpSession session = request.getSession(true);
+                        request.setAttribute("usuarioclase", localUsuario);
+                        session.setAttribute("user",usuario);
                         if(!response.isCommitted()){
                         rd = request.getRequestDispatcher("perfil.jsp");
                         rd.forward(request, response);
