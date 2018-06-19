@@ -23,7 +23,7 @@
     }
     if (usuario == null) {
         usuario = "";
-    }  
+    } 
     if (session.getAttribute("user") == null) {
             response.sendRedirect("login.jsp");
     }

@@ -31,6 +31,11 @@
     if (email == null) {
         email = "";
     }
+    if (session.getAttribute("user") == null) {
+            response.sendRedirect("login.jsp");
+    }else{
+        response.sendRedirect("perfil.jsp");
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -21,6 +21,11 @@
     if (usuario == null) {
         usuario = "";
     }
+    if (session.getAttribute("user") == null) {
+            response.sendRedirect("login.jsp");
+    }else{
+        response.sendRedirect("perfil.jsp");
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,7 +64,7 @@
                             <tr>
                                 <td class="col l12 m12 s12">
 
-                                    <form id='registro' action="controlLogin.jsp" method="POST" autocomplete="off">
+                                    <form id='registro' action="SERVLogin" method="POST" autocomplete="off">
                                         <div class="row card-panel white">
                                             <h4 class="center-align col s12">Iniciar Sesión</h4>
                                             <div class="input-field col s12">

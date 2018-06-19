@@ -22,6 +22,7 @@ import modelo.DAOUsuario;
 import modelo.Usuario;
 
 
+
 /**
  *
  * @author Kevin
@@ -44,7 +45,37 @@ public class SERVLogin extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             /* TODO output your page here. You may use following sample code. */
-            DAOUsuario daoUsuario = new DAOUsuario();
+           
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                    DAOUsuario daoUsuario = new DAOUsuario();
             Usuario localUsuario = new Usuario();
             String respuesta = "";
             String errores = "";
@@ -85,7 +116,8 @@ public class SERVLogin extends HttpServlet {
                     
                     if (errores.equals("") && validador) {
                         
-                        request.setAttribute("sUsuario", usuario);
+                        HttpSession session = request.getSession(true); 
+                        session.setAttribute("user",usuario); 
                         if(!response.isCommitted()){
                         rd = request.getRequestDispatcher("perfil.jsp");
                         rd.forward(request, response);
@@ -110,36 +142,6 @@ public class SERVLogin extends HttpServlet {
             rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response);
             } 
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
