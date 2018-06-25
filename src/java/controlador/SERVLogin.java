@@ -64,10 +64,11 @@ public class SERVLogin extends HttpServlet {
                     listaUsuarios = daoUsuario.consultar();
                     
                     if (listaUsuarios != null) {
-                        for (Usuario listaUsuario : listaUsuarios) {
+                        for (Usuario miUsuario : listaUsuarios) {
                             if (!usuario.equals("") && !pass.equals("")) {
-                            if (usuario.equals(listaUsuario.getNombreUsuario()) && pass.equals(listaUsuario.getContraseña())) {
+                            if (usuario.equals(miUsuario.getNombreUsuario()) && pass.equals(miUsuario.getContraseña())) {
                                 validador = true;
+                                localUsuario = miUsuario;
                                 break;
                             }else{
                                 validador = false;
@@ -87,10 +88,8 @@ public class SERVLogin extends HttpServlet {
                     }
                     
                     if (errores.equals("") && validador) {
-                        
-                        Perfil ps = new Perfil();
-                        
-                        ps = daoPerfil.selecionarPerfil(localUsuario.getIdUsuario());
+                        //Creo un nuevo perfil directamente llamandolo de la base de datos, tomando como referencia la id de usuario.
+                        Perfil ps = daoPerfil.selecionarPerfil(localUsuario.getIdUsuario());
                         if (ps == null) {
                             System.out.println("No sirve la query o no hay perfil");
                         }else{

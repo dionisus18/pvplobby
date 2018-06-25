@@ -37,12 +37,11 @@
                 }
         }
         if (PerfilLocal == null && usuarioLocal != null) {
-        Perfil ps = new Perfil();
-        ps = dao2.selecionarPerfil(usuarioLocal.getIdUsuario());
-        if (ps == null) {
+        PerfilLocal = dao2.selecionarPerfil(usuarioLocal.getIdUsuario());
+        if (PerfilLocal == null) {
                 System.out.println("Error no se consigue ningun perfil o esta mala la query");
             }else{
-            PerfilLocal = ps;
+            //PerfilLocal = ps;
         }
         
         }
