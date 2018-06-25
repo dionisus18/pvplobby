@@ -1,0 +1,31 @@
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 200px;
+  grid-template-areas: 
+    ". a a ."
+    ". a a .";
+}
+.item1 {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+}
+.logoLeft{
+    height: 50px; 
+    padding-top: 10px; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
