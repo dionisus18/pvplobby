@@ -89,7 +89,7 @@ public class SERVLogin extends HttpServlet {
                     
                     if (errores.equals("") && validador) {
                         //Creo un nuevo perfil directamente llamandolo de la base de datos, tomando como referencia la id de usuario.
-                        Perfil ps = daoPerfil.selecionarPerfil(localUsuario.getIdUsuario());
+                        Perfil ps = daoPerfil.seleccionarPerfil(localUsuario.getIdUsuario());
                         if (ps == null) {
                             System.out.println("No sirve la query o no hay perfil");
                         }else{

@@ -32,7 +32,7 @@ public class DAOPerfil implements Operaciones{
     public String consultas(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public Perfil selecionarPerfil(int id){
+    public Perfil seleccionarPerfil(int id){
         Perfil perfil = new Perfil();
         Connection conn;
         PreparedStatement pst;
@@ -67,14 +67,14 @@ public class DAOPerfil implements Operaciones{
     @Override
     public LinkedList<Perfil> consultar() {
         LinkedList<Perfil> listaPerfil = new LinkedList();
-        Connection conn;
+        Connection conexion;
         PreparedStatement pst;
         ResultSet rs;
         String sql = "SELECT * FROM perfil;";
         try {
             Class.forName(db.getDriver());
-            conn = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getPasssword());
-            pst = conn.prepareStatement(sql);
+            conexion = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getPasssword());
+            pst = conexion.prepareStatement(sql);
             rs = pst.executeQuery(); // para ejecutar la consulta
             //recorrer la tabla persona y agregar objetos a la listaPersona
             while (rs.next())
@@ -89,7 +89,7 @@ public class DAOPerfil implements Operaciones{
                         rs.getInt("Usuario_IdUsuario") 
                         ));
                 // una vez finalizado, cerar la conexion a la DB
-                conn.close();
+                conexion.close();
         } catch (ClassNotFoundException | SQLException e) {
         //EXISTEN 2 exception (MULTICATCH)
         }
