@@ -46,7 +46,7 @@ public class SERVFeed extends HttpServlet {
               request.setAttribute("listPublicacion",daoPubli.consultar());  
             }
             if (daoEvent.listadoEventos() != null) {
-                request.setAttribute("listEvento", daoEvent.consultar());
+                request.setAttribute("listEvento", rd);
             }
 
             rd = request.getRequestDispatcher("feed.jsp");
