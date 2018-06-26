@@ -57,6 +57,29 @@ public class DAOPublicacion implements Operaciones {
     public String eliminar(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public String eliminarPublicacion(int idPublicacion){
+        String respuesta = "";
+        Connection conn;
+        PreparedStatement pst;
+        ResultSet rs;
+        String sql = "DELETE FROM publicacion WHERE ID ="+ idPublicacion+";";
+        try{
+            Class.forName(db.getDriver());
+            conn = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getPasssword());
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, idPublicacion);
+            int filas = pst.executeUpdate();
+            //independiente de lo que se haga, Create, Update, Delete , se 
+            //realiza una actualizacion de la tabla
+            respuesta = "Se Eliminado Publicacion ID: " + idPublicacion;
+            conn.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            respuesta = "se cayo esta ve..." + e.toString();
+        }
+        
+        return respuesta;
+    }
 
     @Override
     public String modificar(Object obj) {
@@ -74,20 +97,20 @@ public class DAOPublicacion implements Operaciones {
         Connection conexion;
         PreparedStatement pst;
         ResultSet rs;
-        String sql = "Select * From publicacion";
+        String sql = "select * from publicacion";
         try {
             Class.forName(db.getDriver());
             conexion = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getPasssword());
             pst = conexion.prepareStatement(sql);
             rs = pst.executeQuery();
-            while (rs.next()) {
-                listaPublicacion.add(new Publicacion(rs.getInt(ID_PUBLICACION),
+            while (rs.next())
+                listaPublicacion.add(new Publicacion(rs.getInt("IdPublicacion"),
                         rs.getString(TITULO),
                         rs.getString(CUERPO),
                         rs.getInt(ID_USUARIO_PUBLICACION)
                 ));
                 conexion.close();
-            }
+            
 
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Errores al consultar publicaciones: "+ e.getMessage());

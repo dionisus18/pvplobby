@@ -37,7 +37,7 @@
                 }
         }
         if (PerfilLocal == null && usuarioLocal != null) {
-        PerfilLocal = dao2.selecionarPerfil(usuarioLocal.getIdUsuario());
+        PerfilLocal = dao2.seleccionarPerfil(usuarioLocal.getIdUsuario());
         if (PerfilLocal == null) {
                 System.out.println("Error no se consigue ningun perfil o esta mala la query");
             }else{
@@ -64,20 +64,7 @@
         <script src="js/validacionRegistro.js" type="text/javascript"></script>
     </head>
     <body class="grey lighten-4">
-        <header>
-            <nav>
-                <div class="nav-wrapper white">
-                    <img src="img/Logo PvP Lobby.png" class="logoLeft hide-on-med-and-down" alt="logohome"/>
-                    <a href="index.jsp" class="brand-logo black-text">PVPLobby</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="perfil.jsp"><i class="material-icons black-text">account_box</i></a></li>
-                    </ul>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="explorar.jsp"><i class="material-icons black-text">explore</i></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        <jsp:include page="header.jsp"/>
         <main>
             <section>
                 <div class="row" style="padding-top:50px">
@@ -86,7 +73,7 @@
                     <div class="col m12 l2 s12 center blue-grey">
                         <div class="row">
                             <div class="col l12 s12" style="margin-top: 20px">
-                                <img src="img/Union 4@2x.png" class="circle white" alt=""/>
+                                <img style="border: solid 1px black;" src="img/Union 4@2x.png" class="circle white" alt=""/>
                             </div>
                         </div>
                         <div class="row">
@@ -176,27 +163,7 @@
 
             </section>
         </main>
-        <footer class="page-footer grey lighten-2">
-            <div class="row container center-align">
-                <div class="col l4 s12">
-                    <a href="informacion.jsp">INFORMACION</a>
-
-                </div>
-                <div class="col l4 s12">
-                    <a href="privacidad.jsp">POLITICAS Y PRIVACIDAD</a>    
-                </div>
-                <div class="col l4 s12">
-                    <a href="condiciones.jsp">CONDICIONES</a>    
-                </div>
-            </div>
-
-            <div class="footer-copyright grey-text text-darken-3 ">
-                <div class="container">
-                    © 2018 PvPLobby
-                </div>
-            </div>
-            
-        </footer>   
+        <jsp:include page="footer.jsp"/>
         <script src="js/materialize.min.js" type="text/javascript"></script>
         <script src="js/inicializadorMaterialize.js" type="text/javascript"></script>
     </body>

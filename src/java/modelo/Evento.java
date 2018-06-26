@@ -36,9 +36,48 @@ public class Evento extends Publicacion{
         this.EsPrivado = EsPrivado;
         this.Publicacion_IdPublicacion = Publicacion_IdPublicacion;
     }
+
+    @Override
+    public int getIdPublicacion() {
+        return IdPublicacion;
+    }
+
+    @Override
+    public void setIdPublicacion(int IdPublicacion) {
+        this.IdPublicacion = IdPublicacion;
+    }
+
+    @Override
+    public String getTitulo() {
+        return Titulo;
+    }
+
+    @Override
+    public void setTitulo(String Titulo) {
+        this.Titulo = Titulo;
+    }
+
+    @Override
+    public String getCuerpo() {
+        return Cuerpo;
+    }
+
+    @Override
+    public void setCuerpo(String Cuerpo) {
+        this.Cuerpo = Cuerpo;
+    }
+
+    @Override
+    public int getUsuario_IdUsuario() {
+        return Usuario_IdUsuario;
+    }
+
+    @Override
+    public void setUsuario_IdUsuario(int Usuario_IdUsuario) {
+        this.Usuario_IdUsuario = Usuario_IdUsuario;
+    }
     
-    
-    
+      
     public void EventoUnico(int IdEvento, Date FechaComienzo, Date FechaFinalizacion, Date FechaCreacion, Time HoraTermino, Time HoraInicio, int EsPrivado, int Publicacion_IdPublicacion) {
         this.IdEvento = IdEvento;
         this.FechaComienzo = FechaComienzo;

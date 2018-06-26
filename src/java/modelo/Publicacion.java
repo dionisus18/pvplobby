@@ -5,10 +5,10 @@ package modelo;
  * @author Kevin
  */
 public class Publicacion {
-    private int IdPublicacion;      //PK tipo int en DB
-    private String Titulo;          //60 char max
-    private String Cuerpo;          // 200 char max
-    private int Usuario_IdUsuario;  //FK tipo int en DB
+    protected int IdPublicacion;      //PK tipo int en DB
+    protected String Titulo;          //60 char max
+    protected String Cuerpo;          // 200 char max
+    protected int Usuario_IdUsuario;  //FK tipo int en DB
 
     public Publicacion(int IdPublicacion, String Titulo, String Cuerpo, int Usuario_IdUsuario) {
         this.IdPublicacion = IdPublicacion;
@@ -16,6 +16,10 @@ public class Publicacion {
         this.Cuerpo = Cuerpo;
         this.Usuario_IdUsuario = Usuario_IdUsuario;
     }
+
+
+
+    
     
     public Publicacion(){}
 
@@ -50,5 +54,12 @@ public class Publicacion {
     public void setUsuario_IdUsuario(int Usuario_IdUsuario) {
         this.Usuario_IdUsuario = Usuario_IdUsuario;
     }
+
+
+    
+    
+
+
+
    
 }
