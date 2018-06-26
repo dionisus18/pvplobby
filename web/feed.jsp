@@ -3,6 +3,8 @@
     Created on : 25/06/2018, 01:33:26 PM
     Author     : Kevin
 --%>
+<%@page import="modelo.Evento"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,30 +71,23 @@
                                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
                                 <c:if test="${listEvento != null}">
                                     <table>
-                                        <c:forEach items="${listEvento}" var="record">
+                                        <% for (Evento evento: (LinkedList<Evento>)request.getAttribute("listEvento")) {
+                                                out.print("<td>"+ evento.getTitulo() +"</td>");
+                                                out.print("<td>"+ evento.getCuerpo() +"</td>");
+                                                out.print("<td>"+ evento.getFechaComienzo() +"</td>");
+                                                out.print("<td>"+ evento.getFechaCreacion() +"</td>");
+                                                out.print("<td>"+ evento.getFechaFinalizacion() +"</td>");
+                                                out.print("<td>"+ evento.getIdEvento() +"</td>");
+                                                out.print("<td>"+ evento.getIdPublicacion() +"</td>");
+                                                out.print("<td>"+ evento.getEsPrivado() +"</td>");
+                                                out.print("<td>"+ evento.getUsuario_IdUsuario() +"</td>");
+                                                out.print("<td>"+ evento.getPublicacion_IdPublicacion() +"</td>");
+                                                
+                                                    
+                                            }  %>
                                             <tr>
-                                                <td>${record.titulo }</td>
-                                                <td>${record.cuerpo }</td>
-                                                <td>${record.idEvento }</td>
-                                                <td>${record.fechaComienzo }</td>
-                                                <td>${record.fechaFinalizacion }</td>
-                                                <td>${record.fechaCreacion }</td>
-                                                <td>${record.horaTermino }</td>
-                                                <td>${record.horaInicio }</td>
-                                                <td>${record.esPrivado }</td>
-                                                <td>${record.publicacion_IdPublicacion }</td>
-                                                <!-- 
-                                                    private int IdEvento;                   //PK tipo int en DB
-                                                    private Date FechaComienzo;
-                                                    private Date FechaFinalizacion;
-                                                    private Date FechaCreacion;
-                                                    private Time HoraTermino;
-                                                    private Time HoraInicio;
-                                                    private int EsPrivado;                  // Tinyint 4 donde 1 es si y 0 es no
-                                                    private int Publicacion_IdPublicacion;
-                                                -->
+
                                             </tr>
-                                        </c:forEach>
                                     </table>
                                 </c:if>
                                 <%@ taglib prefix="h" uri="http://java.sun.com/jsp/jstl/core"%>

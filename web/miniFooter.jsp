@@ -8,13 +8,13 @@
 <!DOCTYPE html>
         <div class="row">
             <div class="col l12 s12">
-             <a style="font-size: 0.8em;" href="informacion.jsp">INFORMACION</a>   
+             <a style="font-size: 0.8em; color: grey; font-weight: bold;" href="informacion.jsp">INFORMACION</a>   
             </div>
             <div class="col l12 s12">
              <a style="font-size: 0.8em; color: grey; font-weight: bold;" href="privacidad.jsp">POLITICAS Y PRIVACIDAD</a>   
             </div>
             <div class="col l12 s12">
-                <a style="font-size: 0.8em;" href="condiciones.jsp">CONDICIONES</a>  
+                <a style="font-size: 0.8em; color: grey; font-weight: bold;" href="condiciones.jsp">CONDICIONES</a>  
             </div>
             <div class="col l12 s12">
                 <p style="font-size: 0.7em;">© 2018 PvPLobby</p>
