@@ -29,3 +29,21 @@
     flex: 1 0 auto;
   }
 
+  .input-field-mod{
+border-radius: 5px; border-top: solid #cccccc 1px; border-left: solid #cccccc 1px; border-right: solid #cccccc 1px; padding-left: 10px; padding-right: 10px;
+  }
+  
+  .opciones{
+      
+  }
+  .btn-link{
+      background-color: transparent;
+        padding: 0;
+        border-width: 0;
+        cursor: pointer;
+        text-decoration: underline;
+        float: right;
+        margin-top: 1px;
+  }
+
+

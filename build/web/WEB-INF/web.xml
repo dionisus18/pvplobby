@@ -4,9 +4,49 @@
         <servlet-name>SERVPersona</servlet-name>
         <servlet-class>controlador.SERVPersona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SERVPerfil</servlet-name>
+        <servlet-class>controlador.SERVPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SERVModificarPerfil</servlet-name>
+        <servlet-class>controlador.SERVModificarPerfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SERVPerfilPublico</servlet-name>
+        <servlet-class>controlador.SERVPerfilPublico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SERVFeed</servlet-name>
+        <servlet-class>controlador.SERVFeed</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SERVCrearEvento</servlet-name>
+        <servlet-class>controlador.SERVCrearEvento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SERVPersona</servlet-name>
         <url-pattern>/SERVPersona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SERVPerfil</servlet-name>
+        <url-pattern>/SERVPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SERVModificarPerfil</servlet-name>
+        <url-pattern>/SERVModificarPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SERVPerfilPublico</servlet-name>
+        <url-pattern>/SERVPerfilPublico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SERVFeed</servlet-name>
+        <url-pattern>/SERVFeed</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SERVCrearEvento</servlet-name>
+        <url-pattern>/SERVCrearEvento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

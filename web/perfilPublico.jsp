@@ -20,48 +20,9 @@
         } catch (Exception e) {
             out.print(e.getMessage());
         }
-    
-    DAOUsuario dao = new DAOUsuario();
-    DAOPerfil dao2 = new DAOPerfil();
-    DAOPublicacion dao3 = new DAOPublicacion();
-    Usuario usuarioLocal = (Usuario) request.getAttribute("usuarioclase");
-    Perfil PerfilLocal = (Perfil) request.getAttribute("perfil");    
-    LinkedList<Publicacion> listado = (LinkedList) request.getAttribute("listaPublicaciones");
-    
-    if (usuarioLocal == null) {
-            if (dao.consultar() != null && session.getAttribute("user") != null ) {
-                boolean vs = false;
-                    for (Usuario elem : dao.consultar()) {
-                        
-                            if (elem.getNombreUsuario().equals(session.getAttribute("user"))) {
-                                    usuarioLocal = elem;
-                                    System.out.println(elem.getIdUsuario());
-                                    vs = true;
-                                    break;
-                                }else{
-                                vs = false;
-                            }
-                        }
-                    if (vs) {
-                          System.out.println("No se consiguio cargar el usuario");  
-                        }
-                }
-        }
-        if (PerfilLocal == null && usuarioLocal != null) {
-        PerfilLocal = dao2.seleccionarPerfil(usuarioLocal.getIdUsuario());
-        listado = dao3.seleccionarEventos(usuarioLocal.getIdUsuario());
-        if (PerfilLocal == null) {
-                System.out.println("Error no se consigue ningun perfil o esta mala la query");
-            }else{
-            //PerfilLocal = ps;
-        }
-        
-        }
-        int count= dao3.contador(usuarioLocal.getIdUsuario());
-        int seguidores = dao3.seguidores(usuarioLocal.getIdUsuario());
-        int seguir = dao3.seguidos(usuarioLocal.getIdUsuario());
-        
-
+        if (request.getAttribute("sperfil") == null) {
+              response.sendRedirect("perfil.jsp");  
+            }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -92,47 +53,41 @@
                                 <img style="border: solid 1px black;" src="img/Union 4@2x.png" class="circle white" alt=""/>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col l12 s12">
-                                  <a class="waves-effect waves-light btn modal-trigger white red-text" href="#modal1">Cerrar Sesíon</a> 
-                            </div>   
-                        </div>
                     </div>
                     <!-- Contenedor de Datos de Perfil !-->
                     <div class="col s12 m12 l4">
                         <div class="row valign-wrapper">
                             <div class="col l12" style="padding-left: 40px;">
-                                <h5><%=session.getAttribute("user")%></h5>
+                                <h5>${puser.nombre}</h5>
                             </div> 
                             <div class="col l12" style="padding-top: 10px;">
-                                <form action="SERVModificarPerfil" method="post">
-                                <button class="btn waves-effect waves-light blue accent-3" type="submit" name="btnEditarPerfil">Editar Perfil
+                                <form action="SERVPerfilPublico" method="post">
+                                <button class="btn waves-effect waves-light blue accent-3" type="submit" name="btnEditarPerfil">Seguir
                                 </button>    
-                                </form>
-                                
+                                </form>   
                             </div> 
                         </div>
                         <div class="row">
                             <div class="col l4 m4 s12 flow-text">
                                 <h6>Publicaciones</h6>
-                                <h6> <%= count %></h6>
+                                <h6>${spublicaciones}</h6>
                             </div>
                             <div class="col l4 m4 s12 flow-text">
                                 <h6>Seguidores</h6>
-                                <h6> <%= seguidores %></h6>
+                                <h6> ${sseguidores}</h6>
                             </div> 
                             <div class="col l4 m4 s12 flow-text">
                                 <h6>Seguidos</h6>
-                                <h6> <%= seguir %></h6>
+                                <h6> ${sseguidos}</h6>
                             </div> 
                         </div>
                             <div class="row">
                             <div class="col l12 m12 s12 flow-text">
-                                <h5><%= PerfilLocal.getNombre() %></h5>
+                                <h5>${sperfil.nombre}</h5>
                             </div>
                             <div class="col l12 m12 s12 flow-text">
                                 <h5>Biografía</h5>
-                                <h6><%= PerfilLocal.getBiografia() %></h6>
+                                <h6>${sperfil.biografia}</h6>
                             </div> 
                                 
                             </div>
@@ -154,24 +109,46 @@
                                 Test 1
                             </div>
                             <div id="publicaciones" class="col s12">
-                                                               <form>
-                                <table>
-                                    <% if(listado != null){ 
-                                                                            
-                                        for(Publicacion elem : listado){ count++; %> 
-                                    <tr>
-                                   
-                                        <td class="col s3"><div ><%=elem.getTitulo() %></div></td>
-                                        <td class="col s6"><div ><%=elem.getCuerpo() %></div></td>
-                                        <td class="col s3"><div><a class="waves-effect waves-light btn" href=<%= "\"detalle.jsp?Id=" + elem.getIdPublicacion() + "\"" %> ><%= elem.getIdPublicacion()%></a>
-                                            </div></td>
-                                       
-                                    </tr>
-                                       
-                                <%}%>
-                                <%}%>
+                            <%@ taglib prefix="b" uri="http://java.sun.com/jsp/jstl/core"%>                                   
+                            <b:if test="${listPublicacion != null}">
+                                    <b:forEach items="${listPublicacion}" var="record">
+                                            <div class="card-panel">
+                                            <div class='row'>
+                                                    
+                                                <div class='col s6 left-align'>
+                                                    <form id="frm-send" action="SERVPerfilPublico" method="POST">
+                                                    <input type="hidden" name="idUsuario" value="${record.usuario_IdUsuario}">
+                                                    <button class="btn-flat" type="submit" value="">${record.nombreUsuario}</button>
+                                                    </form>  
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                            </div>
+                                            <div class="row">
+                                                <div class='col s12 left-align'>
+                                                    <h5>${record.titulo}</h5>
+                                                </div>
+                                                <div style="margin-bottom: 30px" class='col s12 left-align'>
+                                                    <p class="truncate">
+                                                        ${record.cuerpo}
+                                                    </p>
+                                                </div>
+                                                <div class="col s6 left-align">
+                                                   <a class="btn-floating btn-flat waves-effect waves-red grey"><i class="material-icons">favorite_border</i></a>  
+                                                </div>
+                                                <div class="col s6 right-align">
+                                                    <a class="btn-floating btn-flat waves-effect waves-purple grey"><i class="material-icons">comment</i></a>
+                                                </div>
+                                            </div>
+                                        </div>      
+                                    </b:forEach>
                                 </table>
-                                 </form>
+                            </b:if>
+                            <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/core"%>
+                            <f:if test="${listPublicacion == null}">
+                                <h5>No hay registros de publicaciones, Empieza tu mismo a compartir ahora!</h5>
+                            </f:if>
                                        
                                        
                                         
@@ -183,18 +160,6 @@
                 </div>
                     
                 <!-- Modal Structure -->
-                <div id="modal1" class="modal">
-                  <div class="modal-content">
-                    <h4>Cerrar Sesíon</h4>
-                    <p>¿Esta Seguro que desea cerrar la sesíon?</p>
-                    <p>Si lo hace, sera redirigido a la pagina de inicio</p>
-                    <p>¿Desea proceder?</p>
-                  </div>
-                  <div class="modal-footer">
-                      <a href="logout.jsp" class="modal-close waves-effect waves-green btn-flat">Si, Cerrar Sesión</a>
-                      <a href="#!" class="modal-close waves-effect waves-green btn-flat">No, Volver</a>
-                  </div>
-                </div>
 
             </section>
         </main>

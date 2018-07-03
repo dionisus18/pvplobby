@@ -24,7 +24,7 @@
     if (session.getAttribute("user") == null) {
             
     }else{
-        response.sendRedirect("perfil.jsp");
+        response.sendRedirect("SERVFeed");
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -3,35 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/privacidad.jsp</file>
             <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVLogin.java</file>
             <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVUsuario.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/detalle_pub.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/detalle.jsp</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/js/inicializadorMaterialize.js</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Provincia.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Region.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVPerfil.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/js/materialize.min.js</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVFeed.java</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/WEB-INF/web.xml</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVPerfilPublico.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/perfilPublico.jsp</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/login.jsp</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAORegion.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Perfil.java</file>
             <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVPersona.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/index_1.jsp</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/logout.jsp</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/css/Style.css</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Database.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Evento.java</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/index.jsp</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Operaciones.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAOPerfil.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/js/validacionRegistro.js</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/miniFooter.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/css/materialize.css</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/js/materialize.js</file>
             <file>file:/E:/Kevin/Desktop/DBtest/web/perfil.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/explorar.jsp</file>
             <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAOUsuario.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Usuario.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/conf/MANIFEST.MF</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/js/jquery.validate.js</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/informacion.jsp</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/web/condiciones.jsp</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAOPersona.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAOProvincia.java</file>
-            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Persona.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/feed.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/DAOEvento.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/controlador/SERVModificarPerfil.java</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/css/materialize.min.css</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/header.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/web/modificarPerfil.jsp</file>
+            <file>file:/E:/Kevin/Desktop/DBtest/src/java/modelo/Docente.java</file>
         </group>
     </open-files>
 </project-private>

@@ -7,21 +7,16 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.DAOEvento;
-import modelo.DAOPublicacion;
 
 /**
  *
  * @author Kevin
  */
-@WebServlet(name = "SERVFeed", urlPatterns = {"/SERVFeed"})
-public class SERVFeed extends HttpServlet {
+public class SERVPerfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +31,16 @@ public class SERVFeed extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            RequestDispatcher rd = null;//
-            
-            DAOPublicacion daoPubli = new DAOPublicacion();
-            DAOEvento daoEvent =  new DAOEvento();
-            if (daoPubli.consultar() != null) {
-              request.setAttribute("listPublicacion",daoPubli.consultar());  
-            }
-            if (daoEvent.listadoEventos() != null) {
-                request.setAttribute("listEvento", daoEvent.listadoEventos());
-            }
-            rd = request.getRequestDispatcher("feed.jsp");
-            rd.forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SERVPerfil</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SERVPerfil at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

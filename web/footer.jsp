@@ -16,7 +16,7 @@
             <a href="privacidad.jsp">POLITICAS Y PRIVACIDAD</a>    
         </div>
         <div class="col l4 s12">
-            <p><a href="condiciones.jsp">CONDICIONES</a>    
+            <a href="condiciones.jsp">CONDICIONES</a>    
         </div>
     </div>
 

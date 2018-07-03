@@ -74,10 +74,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (email == null) {
         email = "";
     }
-    if (session.getAttribute("user") == null) {
-            
-    }else{
-        response.sendRedirect("perfil.jsp");
+    if (session.getAttribute("user") != null) {
+          response.sendRedirect("SERVFeed");  
     }
 
       out.write("\n");

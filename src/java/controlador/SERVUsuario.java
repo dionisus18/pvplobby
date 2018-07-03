@@ -7,7 +7,10 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,10 +36,13 @@ public class SERVUsuario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+       
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             DAOUsuario daoUsuario = new DAOUsuario();
@@ -101,8 +107,12 @@ public class SERVUsuario extends HttpServlet {
                         localUsuario.setNombreUsuario(usuario);
                         localUsuario.setEmail(email);
                         localUsuario.setContraseña(pass);
-                        respuesta = daoUsuario.insertar(localUsuario); // es el retorno que se tiene al INSERT
+                        respuesta = daoUsuario.insertarConNombre(localUsuario, nombre); // es el retorno que se tiene al INSERT
                         request.setAttribute("respuesta", respuesta);
+                        if(!response.isCommitted()){
+                        rd = request.getRequestDispatcher("login.jsp");
+                        rd.forward(request, response);
+                        } 
                     }else{
                         request.setAttribute("snombre", nombre);
                         request.setAttribute("susuario", usuario);
@@ -138,7 +148,11 @@ public class SERVUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(SERVUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -152,7 +166,11 @@ public class SERVUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(SERVUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DAOEvento;
 import modelo.DAOPerfil;
+import modelo.DAOPublicacion;
 
 
 import modelo.DAOUsuario;
@@ -100,8 +102,16 @@ public class SERVLogin extends HttpServlet {
                         HttpSession session = request.getSession(true);
                         request.setAttribute("usuarioclase", localUsuario);
                         session.setAttribute("user",usuario);
+                        DAOPublicacion daoPubli = new DAOPublicacion();
+                        DAOEvento daoEvent =  new DAOEvento();
+                        if (daoPubli.consultar() != null) {
+                          request.setAttribute("listPublicacion",daoPubli.consultar());  
+                        }
+                        if (daoEvent.listadoEventos() != null) {
+                            request.setAttribute("listEvento", daoEvent.listadoEventos());
+                        }
                         if(!response.isCommitted()){
-                        rd = request.getRequestDispatcher("perfil.jsp");
+                        rd = request.getRequestDispatcher("feed.jsp");
                         rd.forward(request, response);
                         }
                     }else{

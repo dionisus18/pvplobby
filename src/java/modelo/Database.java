@@ -11,7 +11,7 @@ public class Database {
 
     public Database() {
         this.driver = "com.mysql.cj.jdbc.Driver";
-        this.url = "jdbc:mysql://localhost:3306/pvplobby?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; //192.168.0.19
+        this.url = "jdbc:mysql://localhost:3306/pvplobby?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&allowMultiQueries=true"; //192.168.0.19
         this.usuario = "root";
         this.passsword = "23881969";
     }
